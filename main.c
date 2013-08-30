@@ -52,7 +52,8 @@ int main(void)
 	MAX7219_CLEAR();
 	while(1)
 	{
-		
+		//This "pattern" array is an array that will draw all 8 lines sequentially
+		//Expand to 0b01010101 to set those bits on, etc
 		int pattern1[8]={0x01,0x0F,0x0F,0x0F,0x0F,0x0F,0x0F,0x01};
 		int pattern2[8]={0x01,0x0F,0x0F,0x3F,0x3F,0x0F,0x0F,0x01};
 		int pattern3[8]={0x01,0x0F,0x0F,0xFF,0xFF,0x0F,0x0F,0x01};
@@ -84,6 +85,7 @@ void MAX7219_SET_COLROW(int col, int row)
 
 void MAX7219_SET_ROWS(int rows[8])
 {
+	//Scroll through all 8 columns and set the rows as per the array
 	MAX7219_CMD(COL0, rows[7]);
 	MAX7219_CMD(COL1, rows[6]);
 	MAX7219_CMD(COL2, rows[5]);
